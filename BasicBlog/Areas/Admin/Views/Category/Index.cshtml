@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BasicBlog.category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Shared.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "CategoryAdd", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.definition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mainMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.catOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seoLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.definition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mainMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.catOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.seoLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "CategoryUpdate", new { id = item.id }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.id })*@
+                @Html.ActionLink("Delete", "CategoryDelete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

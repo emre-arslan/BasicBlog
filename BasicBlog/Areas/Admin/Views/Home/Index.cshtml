@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Shared.cshtml";
+}
+
+  <!-- Count İşlemleri -->
+<div class="row small-spacing">
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content bg-success text-white">
+            <div class="statistics-box with-icon">
+                <i class="ico small fa fa-diamond"></i>
+                <p class="text text-white">Article Count</p>
+                <h2 class="counter">@ViewBag.TotalArticle</h2>
+            </div>
+        </div>
+        <!-- /.box-content -->
+    </div>
+    <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content bg-info text-white">
+            <div class="statistics-box with-icon">
+                <i class="ico small fa fa-download"></i>
+                <p class="text text-white">Proje Count</p>
+                <h2 class="counter">@ViewBag.TotalProje</h2>
+            </div>
+        </div>
+        <!-- /.box-content -->
+    </div>
+    <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content bg-danger text-white">
+            <div class="statistics-box with-icon">
+                <i class="ico small fa fa-bug"></i>
+                <p class="text text-white">Visitor</p>
+                <h2 class="counter">12564</h2>
+            </div>
+        </div>
+        <!-- /.box-content -->
+    </div>
+    <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content bg-warning text-white">
+            <div class="statistics-box with-icon">
+                <i class="ico small fa fa-usd"></i>
+                <p class="text text-white">Error Count in(Day)</p>
+                <h2 class="counter">2,637</h2>
+            </div>
+        </div>
+        <!-- /.box-content -->
+    </div>
+    <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+</div>
+
+<!-- Son Eklenen Makaleler -->
+<div class="row">
+
+    <!-- /.col-lg-6 col-xs-12 -->
+    <div class="col-md-12">
+        <div class="box-content">
+            <h4 class="box-title">Last 20 Article</h4>
+            <!-- /.box-title -->
+            <!-- /.dropdown js__dropdown -->
+            <table class="table table-striped margin-bottom-10 table-purchases">
+                <thead>
+                    <tr>
+                        <th style="width:40%;">Member</th>
+                        <th>Blood Group</th>
+                        <th>Province</th>
+                        <th>Date</th>
+                        <th>State</th>
+                        <th>operation</th>
+
+                        <th style="width:5%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.ArticleList)
+                    {
+                        <tr>
+                            <td>@item.title</td>
+                            <td>@item.contents.Substring(1, 10)</td>
+                            <td>@item.category.definition</td>
+                            <td class="text-warning">@item.user.firstName</td>
+                            @if (item.status != true)
+                            {
+                                <td><a href="#"><i class="fa fa-unlock-alt"></i></a></td>
+                            }
+                            else
+                            {
+                                <td><a href="#"><i class="fa fa-unlock"></i></a></td>}
+                            <td>
+                                <a href="#"><i class="fa fa-diamond"></i></a> | <a href="#"><i class="fa fa-diamond"></i></a>
+                            </td>
+
+                        </tr>
+                    }
+
+                    @*<tr>
+                            <td>Repair Cars</td>
+                            <td>$35</td>
+                            <td>Oct 12,2016</td>
+                            <td class="text-warning">Pending</td>
+                            <td><a href="#"><i class="fa fa-unlock"></i></a></td>
+                        </tr>*@
+                </tbody>
+            </table>
+            <!-- /.table -->
+        </div>
+        <!-- /.box-content -->
+    </div>
+    <!-- /.col-lg-6 col-xs-12 -->
+</div>
+

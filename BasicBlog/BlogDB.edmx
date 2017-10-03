@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="blogDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="thumbnail" Type="nvarchar(max)" />
+          <Property Name="contents" Type="nvarchar(max)" />
+          <Property Name="categoryId" Type="smallint" />
+          <Property Name="status" Type="bit" />
+          <Property Name="seoLink" Type="nvarchar(max)" />
+          <Property Name="date" Type="date" />
+          <Property Name="userId" Type="int" />
+          <Property Name="articleView" Type="int" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="definition" Type="nvarchar" MaxLength="50" />
+          <Property Name="mainMenu" Type="bit" />
+          <Property Name="catOrder" Type="int" />
+          <Property Name="seoLink" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="articleId" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="message" Type="nvarchar" MaxLength="250" />
+          <Property Name="webSite" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="actionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="controllerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="time" Type="date" />
+          <Property Name="alteration" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="projes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="thumbnail" Type="nvarchar(max)" />
+          <Property Name="contents" Type="nvarchar(max)" />
+          <Property Name="language" Type="nvarchar" MaxLength="50" />
+          <Property Name="linkedinLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="githunLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="seoLink" Type="nvarchar(max)" />
+          <Property Name="date" Type="date" />
+          <Property Name="productLink" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="siteSettings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facebook" Type="nvarchar" MaxLength="250" />
+          <Property Name="googleplus" Type="nvarchar" MaxLength="250" />
+          <Property Name="twitter" Type="nvarchar" MaxLength="250" />
+          <Property Name="linkedin" Type="nvarchar" MaxLength="250" />
+          <Property Name="siteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="googlemapsLink" Type="nvarchar(max)" />
+          <Property Name="seoTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="seoDescription" Type="nvarchar" MaxLength="550" />
+          <Property Name="seoAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="seoAbstract" Type="nvarchar" MaxLength="150" />
+          <Property Name="seoCopyright" Type="nvarchar" MaxLength="250" />
+          <Property Name="seoDesigner" Type="nvarchar" MaxLength="50" />
+          <Property Name="seoKeywords" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="definition" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="britday" Type="smalldatetime" />
+          <Property Name="registerData" Type="date" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <Association Name="FK_article_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="article" Type="Self.article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="article">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_article_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="article" Type="Self.article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="article">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_article">
+          <End Role="article" Type="Self.article" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="articleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="blogDBModelStoreContainer">
+          <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projes" EntityType="Self.projes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="siteSettings" EntityType="Self.siteSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tag" EntityType="Self.tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_article_category" Association="Self.FK_article_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="article" EntitySet="article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_article_user" Association="Self.FK_article_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="article" EntitySet="article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_article" Association="Self.FK_comment_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_user" Association="Self.FK_Logs_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="blogDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="thumbnail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="categoryId" Type="Int16" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="seoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="articleView" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK_article_category" FromRole="article" ToRole="category" />
+          <NavigationProperty Name="user" Relationship="Self.FK_article_user" FromRole="article" ToRole="user" />
+          <NavigationProperty Name="comment" Relationship="Self.FK_comment_article" FromRole="article" ToRole="comment" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="definition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mainMenu" Type="Boolean" />
+          <Property Name="catOrder" Type="Int32" />
+          <Property Name="seoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="article" Relationship="Self.FK_article_category" FromRole="category" ToRole="article" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="articleId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="message" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="webSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <NavigationProperty Name="article" Relationship="Self.FK_comment_article" FromRole="comment" ToRole="article" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="actionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="controllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="time" Type="DateTime" Precision="0" />
+          <Property Name="alteration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Logs_user" FromRole="Logs" ToRole="user" />
+        </EntityType>
+        <EntityType Name="projes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="thumbnail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="linkedinLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="githunLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="seoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="productLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="siteSettings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facebook" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="googleplus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="twitter" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="linkedin" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="siteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="googlemapsLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seoTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seoDescription" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="seoAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seoAbstract" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="seoCopyright" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="seoDesigner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seoKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="definition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="britday" Type="DateTime" Precision="0" />
+          <Property Name="registerData" Type="DateTime" Precision="0" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <NavigationProperty Name="article" Relationship="Self.FK_article_user" FromRole="user" ToRole="article" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_user" FromRole="user" ToRole="Logs" />
+        </EntityType>
+        <Association Name="FK_article_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="article" Type="Self.article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="article">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_article_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="article" Type="Self.article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="article">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comment_article">
+          <End Role="article" Type="Self.article" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="articleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logs_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Logs">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="blogDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="article" EntityType="Self.article" />
+          <EntitySet Name="category" EntityType="Self.category" />
+          <EntitySet Name="comment" EntityType="Self.comment" />
+          <EntitySet Name="contact" EntityType="Self.contact" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" />
+          <EntitySet Name="projes" EntityType="Self.projes" />
+          <EntitySet Name="siteSettings" EntityType="Self.siteSettings" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tag" EntityType="Self.tag" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_article_category" Association="Self.FK_article_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="article" EntitySet="article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_article_user" Association="Self.FK_article_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="article" EntitySet="article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comment_article" Association="Self.FK_comment_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logs_user" Association="Self.FK_Logs_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Logs" EntitySet="Logs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="blogDBModelStoreContainer" CdmEntityContainer="blogDBEntities">
+          <EntitySetMapping Name="article">
+            <EntityTypeMapping TypeName="blogDBModel.article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="seoLink" ColumnName="seoLink" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="articleView" ColumnName="articleView" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="blogDBModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="mainMenu" ColumnName="mainMenu" />
+                <ScalarProperty Name="catOrder" ColumnName="catOrder" />
+                <ScalarProperty Name="seoLink" ColumnName="seoLink" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comment">
+            <EntityTypeMapping TypeName="blogDBModel.comment">
+              <MappingFragment StoreEntitySet="comment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="articleId" ColumnName="articleId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="eMail" ColumnName="eMail" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="webSite" ColumnName="webSite" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact">
+            <EntityTypeMapping TypeName="blogDBModel.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="eMail" ColumnName="eMail" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="blogDBModel.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="actionName" ColumnName="actionName" />
+                <ScalarProperty Name="controllerName" ColumnName="controllerName" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="alteration" ColumnName="alteration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projes">
+            <EntityTypeMapping TypeName="blogDBModel.projes">
+              <MappingFragment StoreEntitySet="projes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="projeName" ColumnName="projeName" />
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="linkedinLink" ColumnName="linkedinLink" />
+                <ScalarProperty Name="githunLink" ColumnName="githunLink" />
+                <ScalarProperty Name="seoLink" ColumnName="seoLink" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="productLink" ColumnName="productLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="siteSettings">
+            <EntityTypeMapping TypeName="blogDBModel.siteSettings">
+              <MappingFragment StoreEntitySet="siteSettings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="googleplus" ColumnName="googleplus" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="siteName" ColumnName="siteName" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="googlemapsLink" ColumnName="googlemapsLink" />
+                <ScalarProperty Name="seoTitle" ColumnName="seoTitle" />
+                <ScalarProperty Name="seoDescription" ColumnName="seoDescription" />
+                <ScalarProperty Name="seoAuthor" ColumnName="seoAuthor" />
+                <ScalarProperty Name="seoAbstract" ColumnName="seoAbstract" />
+                <ScalarProperty Name="seoCopyright" ColumnName="seoCopyright" />
+                <ScalarProperty Name="seoDesigner" ColumnName="seoDesigner" />
+                <ScalarProperty Name="seoKeywords" ColumnName="seoKeywords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="blogDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tag">
+            <EntityTypeMapping TypeName="blogDBModel.tag">
+              <MappingFragment StoreEntitySet="tag">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="blogDBModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="britday" ColumnName="britday" />
+                <ScalarProperty Name="registerData" ColumnName="registerData" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

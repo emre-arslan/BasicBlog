@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BasicBlog.tag>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Shared.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "tagAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.definition)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.definition)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "tagUpdate", new { id = item.id }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.id })*@
+                @Html.ActionLink("Delete", "tagDelete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
