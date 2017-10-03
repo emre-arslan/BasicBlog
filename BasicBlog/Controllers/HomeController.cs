@@ -11,6 +11,7 @@ namespace BasicBlog.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.Last5Article = db.article.OrderByDescending(x=>x.id).Take(5).ToList();
             return View();
         }
     }
