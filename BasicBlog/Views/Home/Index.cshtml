@@ -136,6 +136,10 @@
                                                 <li><a href="index7.html">index-8</a></li>
                                             </ul>
                                         </li>
+                                        @foreach (var item in ViewBag.CategoryList)
+                                        {
+                                            <li><a href="~/Category/Index/@item.id">@item.definition</a></li>
+                                        }
                                         <li class="tg-megadropdown">
                                             <a href="javascript:void(0);">News</a>
                                             <ul class="tg-megamenu">
@@ -186,12 +190,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="fashion.html">Fashion</a></li>
-                                        <li><a href="tech.html">tech</a></li>
-                                        <li><a href="sports.html">sports</a></li>
-                                        <li><a href="video.html">video</a></li>
-                                        <li><a href="design.html">design</a></li>
-                                        <li><a href="audio.html">audio</a></li>
+                                     
                                         <li class="tg-hasdropdown">
                                             <a href="#"><i class="fa fa-navicon"></i><i>pages</i></a>
                                             <ul class="tg-dropdownmenu">
@@ -244,25 +243,25 @@
                                                 <li>
                                                     <a href="#">
                                                         <i class="fa fa-clock-o"></i>
-                                                        <span>Sep 12, 2016</span>
+                                                        <span>@item.date.ToShortDateString()</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#">
                                                         <i class="fa fa-user"></i>
-                                                        <span>by Simon Smith</span>
+                                                        <span>@item.user.firstName @item.user.lastName</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#">
                                                         <i class="fa fa-comments-o"></i>
-                                                        <span>37</span>
+                                                        <span>@ViewBag.CommentCount</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#">
                                                         <i class="fa fa-eye"></i>
-                                                        <span>1308</span>
+                                                        <span>@item.articleView</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -683,13 +682,41 @@
                                         <h2>what's hot</h2>
                                         <ul id="tg-filterbale-nav" class="tg-filterbale-nav option-set">
                                             <li><a href="javascript()%3b.html" data-filter="*" class="tg-tag active">All</a></li>
-                                            <li><a href="javascript()%3b.html" data-filter=".fashion" class="tg-tag">fashion</a></li>
-                                            <li><a href="javascript()%3b.html" data-filter=".travel" class="tg-tag">travel</a></li>
+                                            @foreach (var item in ViewBag.CategoryList)
+                                            {
+                                            <li><a href="#" data-filter=".@item.definition" class="tg-tag">@item.definition</a></li>
+                                            }
+                                            
+                                         
+                                            @*<li><a href="javascript()%3b.html" data-filter=".travel" class="tg-tag">travel</a></li>
                                             <li><a href="javascript()%3b.html" data-filter=".tech" class="tg-tag">tech</a></li>
-                                            <li><a href="javascript()%3b.html" data-filter=".sport" class="tg-tag">sport</a></li>
+                                            <li><a href="javascript()%3b.html" data-filter=".sport" class="tg-tag">sport</a></li>*@
                                         </ul>
                                     </div>
                                     <div id="tg-filtermasonry" class="tg-filtermasonry">
+                                        @foreach (var item in ViewBag.CategoryList)
+                                        {
+                                            <article class="tg-theme-post tg-griditem @item.definition">
+                                                <figure>
+                                                    <a href="#">
+                                                        <img src="~/Content/images/whatshot/img-01.jpg" alt="image description">
+                                                    </a>
+                                                    <figcaption>
+                                                        <div class="tg-box">
+                                                            <a class="tg-tag tg-tag-hotstory" href="#"><i class="fa fa-star"></i></a>
+                                                            <div class="tg-postcontent">
+                                                                <div class="tg-theme-tags">
+                                                                    <a class="tg-tag tg-tag-category tg-color-pink" href="#">fashion</a>
+                                                                </div>
+                                                                <div class="tg-border-heading">
+                                                                    <h3><a href="#">Labore et dolore magna</a></h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        }
                                         <article class="tg-theme-post tg-griditem fashion">
                                             <figure>
                                                 <a href="#">
@@ -1052,55 +1079,26 @@
                         *************************************-->
                         <div class="col-sm-4">
                             <aside id="tg-sidebar-upper" class="tg-sidebar tg-haslayout">
-                                <div class="tg-widget tg-widget-add">
-                                    <figure class="tg-add">
-                                        <a href="#">
-                                            <img src="~/Content/images/addimg-02.jpg" alt="image description">
-                                        </a>
-                                    </figure>
-                                </div>
-                                <div class="tg-widget tg-widget-social">
+                                <div class="tg-widget tg-newsletter-widget">
                                     <div class="tg-section-heading">
-                                        <h2>Stay connected</h2>
+                                        <h2>signup newsletter</h2>
                                     </div>
-                                    <ul class="tg-socialicons">
-                                        <li>
-                                            <a class="tg-fb-bg" href="#">
-                                                <i class="fa fa-facebook-f"></i>
-                                                <span>2.95k</span>
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a class="tg-linkdin-bg" href="#">
-                                                <i class="fa fa-linkedin"></i>
-                                                <span>3k</span>
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a class="tg-twitter-bg" href="#">
-                                                <i class="fa fa-twitter"></i>
-                                                <span>1.5k</span>
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a class="tg-pintrest-bg" href="#">
-                                                <i class="fa fa-pinterest-p"></i>
-                                                <span>2.95k</span>
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a class="tg-google-bg" href="#">
-                                                <i class="fa fa-google-plus"></i>
-                                                <span>2.95k</span>
-                                            </a>
-
-                                        </li>
-                                    </ul>
+                                    <div class="tg-newsletter">
+                                        <figure>
+                                            <img src="/Content/images/newsletter-img.jpg" alt="image description">
+                                        </figure>
+                                        <h3>live in the now<span>signup now</span></h3>
+                                        <form class="tg-form-newsletter">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <input type="text" placeholder="You Email">
+                                                </div>
+                                                <button class="tg-btn" type="submit">singnup</button>
+                                            </fieldset>
+                                        </form>
+                                    </div>
                                 </div>
+                                
                                 <div class="tg-widget tg-catagories-widget">
                                     <div class="tg-section-heading">
                                         <h2>top catagories</h2>
@@ -1108,35 +1106,35 @@
                                     <ul>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Jan 2016 (1604)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">May 2016 (556)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Feb 2016 (2621)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Jun 2016 (502)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Mar 2016 (2132)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Jul 2016 (226)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">Apr 2016 (5623)</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-angle-right"></i>
-                                            <a href="#">Adipisicing elitsed</a>
+                                            <a href="#">view all</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1148,159 +1146,20 @@
                                     </ul>
                                     <div class="tg-tab-content tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="home">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-01.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-02.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-03.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
+                                           @Html.Action("Popular")
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="profile">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-04.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-05.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-06.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
+                                            @Html.Action("Recent")
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="messages">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-07.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-08.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-09.jpg"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
+                                          @Html.Action("Reviews")
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </aside>
                         </div>
+
                         <!--************************************
                                 Sidebar End
                         *************************************-->
@@ -1475,752 +1334,14 @@
                         <!--************************************
                                 Content Start
                         *************************************-->
-                        <div class="col-sm-8">
-                            <div id="tg-content-lower" class="tg-content tg-haslayout">
-                                <section class="tg-haslayout tg-latest-technology">
-                                    <div class="tg-section-heading">
-                                        <h2>latest technology</h2>
-                                    </div>
-                                    <article class="tg-theme-post tg-category-full">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12">
-                                                <figure>
-                                                    <a href="#">
-                                                        <img src="~/Content/images/categories/img-03.jpg" alt="image description">
-                                                    </a>
-                                                    <figcaption>
-                                                        <a href="#" class="tg-tag tg-tag-hotstory"><i class="fa fa-star"></i></a>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12">
-                                                <div class="tg-box">
-                                                    <div class="tg-postcontent">
-                                                        <div class="tg-border-heading">
-                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                        </div>
-                                                        <ul class="tg-postmetadata">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span>Sep 12, 2016</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-user"></i>
-                                                                    <span>by Simon</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-comments-o"></i>
-                                                                    <span>37</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>1308</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="tg-description">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elita sed do eiusmod tempor incididunt ut labore et dolores magna aliqua ut enim ad minim.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="tg-theme-post tg-category-full">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12">
-                                                <figure>
-                                                    <a href="#">
-                                                        <img src="~/Content/images/categories/img-04.jpg" alt="image description">
-                                                    </a>
-                                                    <figcaption>
-                                                        <a href="#" class="tg-tag tg-videotag"><i class="fa fa-play"></i>2:30</a>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12">
-                                                <div class="tg-box">
-                                                    <div class="tg-postcontent">
-                                                        <div class="tg-border-heading">
-                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                        </div>
-                                                        <ul class="tg-postmetadata">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span>Sep 12, 2016</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-user"></i>
-                                                                    <span>by Simon</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-comments-o"></i>
-                                                                    <span>37</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>1308</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="tg-description">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elita sed do eiusmod tempor incididunt ut labore et dolores magna aliqua ut enim ad minim.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="tg-theme-post tg-category-full">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12">
-                                                <figure>
-                                                    <a href="#">
-                                                        <img src="~/Content/images/categories/img-05.jpg" alt="image description">
-                                                    </a>
-                                                    <figcaption>
-                                                        <a href="#" class="tg-tag tg-tag-hotstory"><i class="fa fa-star"></i></a>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12">
-                                                <div class="tg-box">
-                                                    <div class="tg-postcontent">
-                                                        <div class="tg-border-heading">
-                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                        </div>
-                                                        <ul class="tg-postmetadata">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span>Sep 12, 2016</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-user"></i>
-                                                                    <span>by Simon</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-comments-o"></i>
-                                                                    <span>37</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>1308</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="tg-description">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elita sed do eiusmod tempor incididunt ut labore et dolores magna aliqua ut enim ad minim.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </section>
-                                <section class="tg-haslayout tg-gallery">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="tg-section-heading">
-                                                <h2>gallery</h2>
-                                            </div>
-                                            <div id="tg-gallery-slider" class="tg-gallery-slider tg-haslayout tg-theme-post">
-                                                <div class="item">
-                                                    <figure>
-                                                        <img src="~/Content/images/gallery/img-01.jpg" alt="image description">
-                                                        <figcaption>
-                                                            <div class="tg-box">
-                                                                <div class="tg-postcontent">
-                                                                    <div class="tg-border-heading">
-                                                                        <h3><a href="#">Labore et dolore magna</a></h3>
-                                                                    </div>
-                                                                    <ul class="tg-postmetadata">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                <span>Sep 12, 2016</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure>
-                                                        <img src="~/Content/images/gallery/img-02.jpg" alt="image description">
-                                                        <figcaption>
-                                                            <div class="tg-box">
-                                                                <div class="tg-postcontent">
-                                                                    <div class="tg-border-heading">
-                                                                        <h3><a href="#">Labore et dolore magna</a></h3>
-                                                                    </div>
-                                                                    <ul class="tg-postmetadata">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                <span>Sep 12, 2016</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure>
-                                                        <img src="~/Content/images/gallery/img-03.jpg" alt="image description">
-                                                        <figcaption>
-                                                            <div class="tg-box">
-                                                                <div class="tg-postcontent">
-                                                                    <div class="tg-border-heading">
-                                                                        <h3><a href="#">Labore et dolore magna</a></h3>
-                                                                    </div>
-                                                                    <ul class="tg-postmetadata">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                <span>Sep 12, 2016</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure>
-                                                        <img src="~/Content/images/gallery/img-04.jpg" alt="image description">
-                                                        <figcaption>
-                                                            <div class="tg-box">
-                                                                <div class="tg-postcontent">
-                                                                    <div class="tg-border-heading">
-                                                                        <h3><a href="#">Labore et dolore magna</a></h3>
-                                                                    </div>
-                                                                    <ul class="tg-postmetadata">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                <span>Sep 12, 2016</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure>
-                                                        <img src="~/Content/images/gallery/img-05.jpg" alt="image description">
-                                                        <figcaption>
-                                                            <div class="tg-box">
-                                                                <div class="tg-postcontent">
-                                                                    <div class="tg-border-heading">
-                                                                        <h3><a href="#">Labore et dolore magna</a></h3>
-                                                                    </div>
-                                                                    <ul class="tg-postmetadata">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                <span>Sep 12, 2016</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="tg-haslayout tg-alsocheckout tg-halfpadding tg-paddingbottomzero">
-                                    <div class="tg-section-heading">
-                                        <h2>also check out</h2>
-                                    </div>
-                                    <div id="tg-postslider" class="tg-postslider tg-haslayout">
-                                        <div class="row">
-                                            <div id="tg-alsocheck" class="col-md-6 col-sm-12">
-                                                <div class="cycle-slideshow" data-cycle-slides="div.pro-item" data-cycle-timeout="0" data-cycle-fx="scrollHorz">
-                                                    <div class="pro-item tg-theme-post">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/img-01.jpg" alt="image dexcription">
-                                                            <figcaption>
-                                                                <div class="tg-box">
-                                                                    <div class="tg-postcontent">
-                                                                        <div class="tg-border-heading">
-                                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                                        </div>
-                                                                        <ul class="tg-postmetadata">
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                    <span>Sep 12, 2016</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-user"></i>
-                                                                                    <span>by Simon</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-comments-o"></i>
-                                                                                    <span>37</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                    <span>1308</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/img-01.jpg" alt="image dexcription">
-                                                            <figcaption>
-                                                                <div class="tg-box">
-                                                                    <div class="tg-postcontent">
-                                                                        <div class="tg-border-heading">
-                                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                                        </div>
-                                                                        <ul class="tg-postmetadata">
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                    <span>Sep 12, 2016</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-user"></i>
-                                                                                    <span>by Simon</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-comments-o"></i>
-                                                                                    <span>37</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                    <span>1308</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/img-01.jpg" alt="image dexcription">
-                                                            <figcaption>
-                                                                <div class="tg-box">
-                                                                    <div class="tg-postcontent">
-                                                                        <div class="tg-border-heading">
-                                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                                        </div>
-                                                                        <ul class="tg-postmetadata">
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                    <span>Sep 12, 2016</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-user"></i>
-                                                                                    <span>by Simon</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-comments-o"></i>
-                                                                                    <span>37</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                    <span>1308</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/img-01.jpg" alt="image dexcription">
-                                                            <figcaption>
-                                                                <div class="tg-box">
-                                                                    <div class="tg-postcontent">
-                                                                        <div class="tg-border-heading">
-                                                                            <h3><a href="#">Adipisicing elit, sed do eiusmod temor incididunt labore</a></h3>
-                                                                        </div>
-                                                                        <ul class="tg-postmetadata">
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-clock-o"></i>
-                                                                                    <span>Sep 12, 2016</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-user"></i>
-                                                                                    <span>by Simon</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-comments-o"></i>
-                                                                                    <span>37</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#">
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                    <span>1308</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="tg-alsocheck-thumb" class="col-md-6 col-sm-12">
-                                                <div class="cycle-slideshow vertical haslayout"
-                                                     data-cycle-fx="carousel"
-                                                     data-cycle-timeout="0"
-                                                     data-cycle-next="#tg-alsocheck-thumb .cycle-next"
-                                                     data-cycle-prev="#tg-alsocheck-thumb .cycle-prev"
-                                                     data-cycle-carousel-visible="2"
-                                                     data-cycle-slides=">div"
-                                                     data-allow-wrap="true"
-                                                     data-cycle-carousel-vertical="true">
-                                                    <div class="pro-item tg-theme-post tg-category-small">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/thumb/img-01.jpg" alt="image dexcription">
-                                                        </figure>
-                                                        <div class="tg-postdata">
-                                                            <div class="tg-border-heading">
-                                                                <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                            </div>
-                                                            <ul class="tg-postmetadata">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-clock-o"></i>
-                                                                        <span>Sep 12, 2016</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post tg-category-small">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/thumb/img-02.jpg" alt="image dexcription">
-                                                        </figure>
-                                                        <div class="tg-postdata">
-                                                            <div class="tg-border-heading">
-                                                                <h3><a href="#">Sed do eiusmod tempor ut</a></h3>
-                                                            </div>
-                                                            <ul class="tg-postmetadata">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-clock-o"></i>
-                                                                        <span>Sep 12, 2016</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post tg-category-small">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/thumb/img-03.jpg" alt="image dexcription">
-                                                        </figure>
-                                                        <div class="tg-postdata">
-                                                            <div class="tg-border-heading">
-                                                                <h3><a href="#">Dolore magna aliqua enimad minim veniam</a></h3>
-                                                            </div>
-                                                            <ul class="tg-postmetadata">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-clock-o"></i>
-                                                                        <span>Sep 12, 2016</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pro-item tg-theme-post tg-category-small">
-                                                        <figure>
-                                                            <img src="~/Content/images/also-check/thumb/img-02.jpg" alt="image dexcription">
-                                                        </figure>
-                                                        <div class="tg-postdata">
-                                                            <div class="tg-border-heading">
-                                                                <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                            </div>
-                                                            <ul class="tg-postmetadata">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <i class="fa fa-clock-o"></i>
-                                                                        <span>Sep 12, 2016</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="btn-slider">
-                                                    <span class="po-bgcolor po-prev cycle-prev"><i class="fa fa-angle-up"></i></span>
-                                                    <span class="po-bgcolor po-next cycle-next"><i class="fa fa-angle-down"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
+                        
                         <!--************************************
                                 Content End
                         *************************************-->
                         <!--************************************
                                 Sidebar Start
                         *************************************-->
-                        <div class="col-sm-4">
-                            <aside id="tg-sidebar-lower" class="tg-sidebar tg-haslayout">
-                                <div class="tg-widget tg-newsletter-widget">
-                                    <div class="tg-section-heading">
-                                        <h2>signup newsletter</h2>
-                                    </div>
-                                    <div class="tg-newsletter">
-                                        <figure>
-                                            <img src="~/Content/images/newsletter-img.jpg" alt="image description">
-                                        </figure>
-                                        <h3>live in the now<span>signup now</span></h3>
-                                        <form class="tg-form-newsletter">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <input type="text" placeholder="You Email">
-                                                </div>
-                                                <button class="tg-btn" type="submit">singnup</button>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="tg-widget tg-catagories-widget">
-                                    <div class="tg-section-heading">
-                                        <h2>top catagories</h2>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Jan 2016 (1604)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">May 2016 (556)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Feb 2016 (2621)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Jun 2016 (502)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Mar 2016 (2132)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Jul 2016 (226)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">Apr 2016 (5623)</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-angle-right"></i>
-                                            <a href="#">view all</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tg-widget tg-widget-add">
-                                    <figure class="tg-add">
-                                        <a href="#">
-                                            <img src="~/Content/images/addimg-02.jpg" alt="image description">
-                                        </a>
-                                    </figure>
-                                </div>
-                                <div class="tg-widget tg-slider-widget">
-                                    <div class="tg-section-heading">
-                                        <h2>Most commented</h2>
-                                    </div>
-                                    <div id="tg-widget-slider" class="tg-widget-slider tg-haslayout">
-                                        <div class="item">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-01.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-02.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-03.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-04.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="item">
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-05.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                            <article class="tg-theme-post tg-category-small">
-                                                <figure>
-                                                    <a href="#"><img src="~/Content/images/footer-instagram/random-post/img-06.jpg" alt="image description"></a>
-                                                </figure>
-                                                <div class="tg-postdata">
-                                                    <h3><a href="#">Adipisicing elit sed do eiuod tempor ut labore</a></h3>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-clock-o"></i>
-                                                                <span>Sep 12, 2016</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tg-widget tg-tags-widget">
-                                    <div class="tg-section-heading">
-                                        <h2>tags</h2>
-                                    </div>
-                                    <div class="tg-tags">
-                                        <a class="tg-btn" href="#">fashion</a>
-                                        <a class="tg-btn" href="#">travel</a>
-                                        <a class="tg-btn" href="#">blog</a>
-                                        <a class="tg-btn" href="#">sports</a>
-                                        <a class="tg-btn" href="#">ui</a>
-                                        <a class="tg-btn" href="#">magazine</a>
-                                        <a class="tg-btn" href="#">tech</a>
-                                        <a class="tg-btn" href="#">fun time</a>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
+                        
                         <!--************************************
                                 Sidebar End
                         *************************************-->

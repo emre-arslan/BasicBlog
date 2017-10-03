@@ -1,0 +1,23 @@
+﻿@model List<BasicBlog.comment>
+
+@foreach (var item in Model)
+{
+    <article class="tg-theme-post tg-category-small">
+        <figure>
+            <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-07.jpg"></a>
+        </figure>
+        <div class="tg-postdata">
+            <h3><a href="#">@item.article.title</a></h3>
+            <h4>@item.message</h4>
+            <ul class="tg-postmetadata">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clock-o"></i>
+                        <span>@item.date.Value.ToShortDateString()</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </article>
+
+}

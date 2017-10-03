@@ -1,0 +1,20 @@
+﻿@model List<BasicBlog.article>
+@foreach (var item in Model)
+{
+    <article class="tg-theme-post tg-category-small">
+        <figure>
+            <a href="#"><img alt="image description" src="~/Content/images/footer-instagram/random-post/img-01.jpg"></a>
+        </figure>
+        <div class="tg-postdata">
+            <h3><a href="#">@item.title</a></h3>
+            <ul class="tg-postmetadata">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clock-o"></i>
+                        <span>@item.date.Value.ToShortDateString()</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </article>
+}
