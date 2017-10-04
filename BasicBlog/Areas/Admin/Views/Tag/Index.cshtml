@@ -1,31 +1,52 @@
 ﻿@model IEnumerable<BasicBlog.tag>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tags";
     Layout = "~/Areas/Admin/Views/Shared/_Shared.cshtml";
 }
 <p>
-    @Html.ActionLink("Create New", "tagAdd")
+    @Html.ActionLink("Create New", "tagAdd", null, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.definition)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.definition)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "tagUpdate", new { id = item.id }) |
-                @*@Html.ActionLink("Details", "Details", new { id=item.id })*@
-                @Html.ActionLink("Delete", "tagDelete", new { id = item.id })
-            </td>
-        </tr>
-    }
+<link rel="stylesheet" href="~/Areas/Admin/Content/assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="~/Areas/Admin/Content/assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+<link href="~/Areas/Admin/Content/assets/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<div class="row small-spacing">
+    <div class="col-xs-12">
+        <div class="box-content">
+            <h4 class="box-title">Tag List</h4>
+            <table id="example" class="table table-striped table-bordered display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tag Name</th>
+                       
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tag Name</th>
 
-</table>
+                        <th>İşlem</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.id</td>
+                            <td>@Html.ActionLink(item.definition, "TagUpdate/" + item.id)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "TagUpdate", "Tag", new { id = item.id }, new { @class = "btn-xs btn-success" })
+                                @Html.ActionLink("Delete", "TagDelete", "Tag", new { id = item.id }, new { @class = "btn-xs btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-content -->
+    </div>
+</div>

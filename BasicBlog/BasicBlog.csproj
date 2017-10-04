@@ -567,7 +567,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Filter\ActFilter.cs" />
     <Compile Include="Areas\Admin\Controllers\Filter\AuthFilter.cs" />
+    <Compile Include="Areas\Admin\Controllers\Filter\ExcFilter.cs" />
+    <Compile Include="Areas\Admin\Controllers\Filter\ResFilter.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
@@ -603,6 +606,7 @@
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -708,6 +712,7 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Category\ArticleView.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

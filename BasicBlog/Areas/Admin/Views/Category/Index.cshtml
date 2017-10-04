@@ -7,52 +7,61 @@
 <p>
     @Html.ActionLink("Create New", "CategoryAdd", null, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.definition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mainMenu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.catOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.seoLink)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.definition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mainMenu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.catOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.seoLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.image)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "CategoryUpdate", new { id = item.id }) |
-                @*@Html.ActionLink("Details", "Details", new { id=item.id })*@
-                @Html.ActionLink("Delete", "CategoryDelete", new { id = item.id })
-            </td>
-        </tr>
-    }
+<link rel="stylesheet" href="~/Areas/Admin/Content/assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="~/Areas/Admin/Content/assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+<link href="~/Areas/Admin/Content/assets/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<div class="row small-spacing">
+    <div class="col-xs-12">
+        <div class="box-content">
+            <h4 class="box-title">Article List</h4>
+            <table id="example" class="table table-striped table-bordered display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Thumbnail</th>
+                        <th>Main Menu</th>
+                        <th>Cat Order</th>
+                        <th>Seo Link</th>
 
-</table>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Thumbnail</th>
+                        <th>Main Menu</th>
+                        <th>Cat Order</th>
+                        <th>Seo Link</th>
+
+                        <th>İşlem</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(item.definition, "Update/" + item.id)</td>
+                            <td><img src="@item.image" alt="Alternate Text" /></td>
+                            <td>@item.mainMenu</td>
+                            <td>@item.catOrder</td>
+                            <td>@item.seoLink</td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "CategoryUpdate", "Category", new { id = item.id }, new { @class = "btn-xs btn-success" })
+                                @Html.ActionLink("Delete", "CategoryDelete", "Category", new { id = item.id }, new { @class = "btn-xs btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-content -->
+    </div>
+</div>
+
+
 
 

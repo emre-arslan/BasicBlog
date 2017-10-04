@@ -1,5 +1,5 @@
 ﻿<@model IEnumerable<BasicBlog.article>
-    @{ ViewBag.Title = "Index";
+    @{ ViewBag.Title = "Article List";
         Layout = "~/Areas/Admin/Views/Shared/_Shared.cshtml";
     }
 
@@ -47,12 +47,12 @@
         <td>@item.status</td>
         <td>
         @if (item.status == true)
-        {   @Html.ActionLink("Deactivate", "Deactivate", "Article", new { id = item.id }, new { @class = "btn-xs btn-success" })
+        {   @Html.ActionLink("Deactivate", "Deactivate", "Article", new { id = item.id }, new { @class = "btn-xs btn-danger" })
             @Html.ActionLink("Delete", "Delete", "Article", new { id = item.id }, new { @class = "btn-xs btn-warning" }) }
         else
         {
             @Html.ActionLink("Active", "Active", "Article", new { id = item.id }, new { @class = "btn-xs btn-success" })
-            @Html.ActionLink("Delete", "Delete", "Article", new { id = item.id }, new { @class = "btn-xs btn-warning" })
+            @Html.ActionLink("Delete", "Delete", "Article", new { id = item.id }, new { @class = "btn-xs btn-danger" })
         }
         </td>
         </tr>

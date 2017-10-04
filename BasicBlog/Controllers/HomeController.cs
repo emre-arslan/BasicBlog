@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicBlog.Areas.Admin.Controllers.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace BasicBlog.Controllers
 {
     public class HomeController : BaseController
     {
+        [ExcFilter]
         // GET: Home
         public ActionResult Index()
         {
+            int sayi = 0;
+            int deger = 100 / sayi;
+
             ViewBag.Last5Article = db.article.OrderByDescending(x => x.id).Take(5).ToList();
             ViewBag.CommentCount = db.article.Count(x => x.comment.Any(y => y.articleId == x.id));
             ViewBag.Popular = db.article.Take(5).OrderBy(x => x.articleView);

@@ -1,0 +1,12 @@
+﻿@model Exception
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<div class="jumbotron">
+    <h1>Bir Hata Oluştu...</h1>
+    <p>@Model.Message</p>
+</div>
+<hr />
+<p>@Model.StackTrace</p>

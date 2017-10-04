@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace BasicBlog.Areas.Admin.Controllers
 {
-    [AuthFilter]
+    [AuthFilter, ActFilter, ResFilter]
     public class TagController : BaseController
     {
         // GET: Admin/Tag

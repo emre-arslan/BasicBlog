@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace BasicBlog.Areas.Admin.Controllers
 {
-    [AuthFilter]
+    [AuthFilter, ActFilter, ResFilter]
     public class HomeController : BaseController
     {
         // GET: Admin/Home
